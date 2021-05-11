@@ -19,20 +19,15 @@ public class UsersResource {
     UsersController usersController;
 
     @PostMapping("/users")
-    public ResponseEntity<?> save(@RequestHeader(value = "Authorization")String token, @RequestBody Users users)  {
+    public ResponseEntity<?> save(@RequestBody Users users)  {
 
         Hashtable retorno = new Hashtable();
         try {
-            Users us =  UtilToken.decode(token);
-            if(us.getId() == 0){
-                retorno.put("ret", "unsuccess");
-                retorno.put("motivo", "Token Inválido");
-            }else{
-                usersController.save(users);
-                retorno.put("ret", "success");
-                retorno.put("motivo", "OK");
-                retorno.put("obj", users);
-            }
+            usersController.save(users);
+            retorno.put("ret", "success");
+            retorno.put("motivo", "OK");
+            retorno.put("obj", users);
+
         }
         catch (SQLException e ) {
             retorno.put("ret", "unsuccess");

@@ -1,7 +1,6 @@
 package com.smsfree.spisms.model;
 
-import com.pain_crud.Alias;
-import com.pain_crud.Ignore;
+import com.pain_crud.*;
 
 import java.io.Serializable;
 
@@ -16,7 +15,7 @@ public class Users implements Serializable {
     private boolean edit = false;
     @Ignore
     private boolean del = false;
-
+    @Id
     private int id = 0;
 
     private String nome;

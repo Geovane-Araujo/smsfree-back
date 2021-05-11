@@ -2,9 +2,9 @@ create table if not exists users(
 
     id serial primary key,
     nome varchar(70),
-    login varchar(70),
+    login varchar(80),
     senha varchar(20),
-    token varchar(100),
+    token varchar(400),
     ativo smallint,
     type smallint -- 0 adm full e 1 usuario commum
 );
