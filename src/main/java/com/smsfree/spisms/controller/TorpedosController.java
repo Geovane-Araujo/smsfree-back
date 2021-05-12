@@ -2,9 +2,7 @@ package com.smsfree.spisms.controller;
 
 import com.pain_crud.Alias;
 import com.pain_crud.PainCrud;
-import com.smsfree.spisms.model.Destinatarios;
-import com.smsfree.spisms.model.Torpedos;
-import com.smsfree.spisms.model.Users;
+import com.smsfree.spisms.model.*;
 import com.smsfree.spisms.smsconnections.SmsConnections;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -66,20 +64,29 @@ public class TorpedosController {
         return object;
     }
 
-    public Object checkShipping(Users us) throws SQLException {
+    public Object checkShipping(Users us) throws SQLException, IllegalAccessException {
 
         Connection con = null;
         con = connection.getNewConnections("sms_free");
 
         String sql = "select * from torpedos where idusuario = " + us.getId() + " and status = 0";
 
-        List<Torpedos> torpedos = new ArrayList<>();
-        Torpedos torp;
+        List<Mensagem> torpedos = new ArrayList<>();
+        Mensagem sms;
+
+
         for (Torpedos tp : (List<Torpedos>) pc.getAll(Torpedos.class,con,sql)) {
-            torp = new Torpedos();
-            torp.setDestinatarios((List<Destinatarios>) pc.getAll(Destinatarios.class,con,"select * from destinatarios where idmensagem = " + torp.getId()));
-            torpedos.add(torp);
+            sms = new Mensagem();
+            sms.setId(tp.getId());
+            sms.setMensagem(tp.getMensagem());
+            sms.setDataAgendamento(tp.getDataagendamento());
+            sms.setDestinatarios((List<Destino>) pc.getAll(Destino.class,con,"select * from destinatarios where idmensagem = " + tp.getId()));
+            torpedos.add(sms);
+            tp.setStatus(1);
+            pc.editingOne(tp,Torpedos.class,con,tp.getId());
         }
+
+
         con.close();
         return torpedos;
     }
@@ -97,5 +104,19 @@ public class TorpedosController {
 
         con.close();
         return torpedos;
+    }
+
+    public Object getSms(int id) throws SQLException {
+
+        Object object = new Object();
+        Connection con = null;
+        con = connection.getNewConnections("sms_free");
+
+        String sql = "select id, mensagem,COALEsCE(CAST(dataagendamento as varchar),'') as DataAgendamento,COALEsCE(CAST(dataenvio as varchar),'')as DataEnvio ,(select COUNT(*) from destinatarios where idmensagem = torpedos.id) as quantidade\n" +
+                "from torpedos where idusuario = " + id;
+
+        object =  (List<Object>) pc.getAll(Object.class,con,sql);
+        con.close();
+        return object;
     }
 }

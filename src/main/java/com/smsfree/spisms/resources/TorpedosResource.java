@@ -75,6 +75,7 @@ public class TorpedosResource {
     public ResponseEntity<?> checkshipping(@RequestHeader(value = "Authorization")String token)  {
 
         Hashtable retorno = new Hashtable();
+        Object obj;
         try {
             Users us = UtilToken.decode(token);
             if(us.getId() == 0){
@@ -84,6 +85,30 @@ public class TorpedosResource {
                 retorno.put("ret", "success");
                 retorno.put("motivo", "OK");
                 retorno.put("obj", torpedosController.checkShipping(us));
+            }
+        }
+        catch (SQLException | IllegalAccessException e ) {
+            retorno.put("ret", "unsuccess");
+            retorno.put("motivo",e.getMessage());
+        }
+
+        return ResponseEntity.ok().body(retorno);
+    }
+
+    @GetMapping("/getSmss")
+    public ResponseEntity<?> getSmss(@RequestHeader(value = "Authorization")String token)  {
+
+        Hashtable retorno = new Hashtable();
+        Object obj;
+        try {
+            Users us = UtilToken.decode(token);
+            if(us.getId() == 0){
+                retorno.put("ret", "unsuccess");
+                retorno.put("motivo", "Token Inválido");
+            } else {
+                retorno.put("ret", "success");
+                retorno.put("motivo", "OK");
+                retorno.put("obj", torpedosController.getSms(us.getId()));
             }
         }
         catch (SQLException e ) {
