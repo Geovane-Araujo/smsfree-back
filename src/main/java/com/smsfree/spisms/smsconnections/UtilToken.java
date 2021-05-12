@@ -49,7 +49,7 @@ public class UtilToken {
         return us;
     }
 
-    public static String encode(Object us){
+    public static String encode(Users us){
         String encodedString = java.util.Base64.getEncoder().encodeToString((us.toString()).getBytes());
         return encodedString;
     }

@@ -1,10 +1,12 @@
 package com.smsfree.spisms.model;
 
 import com.pain_crud.Alias;
+import com.pain_crud.Id;
 import com.pain_crud.Ignore;
 import com.pain_crud.ListObjectLocal;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.List;
 
 @Alias(value = "torpedos")
@@ -14,12 +16,12 @@ public class Torpedos implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Ignore
-    private boolean add;
+    private boolean add = true;
     @Ignore
-    private boolean edit;
+    private boolean edit = false;
     @Ignore
-    private boolean del;
-
+    private boolean del = false;
+    @Id
     private int id;
 
     private String mensagem;
@@ -29,6 +31,16 @@ public class Torpedos implements Serializable {
     private List<Destinatarios> destinatarios;
 
     private int status = 0;
+
+    private Timestamp dataagendamento;
+
+    public Timestamp getDataagendamento() {
+        return dataagendamento;
+    }
+
+    public void setDataagendamento(Timestamp dataagendamento) {
+        this.dataagendamento = dataagendamento;
+    }
 
     public int getStatus() {
         return status;

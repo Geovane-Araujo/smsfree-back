@@ -1,6 +1,7 @@
 package com.smsfree.spisms.model;
 
 import com.pain_crud.Alias;
+import com.pain_crud.Id;
 import com.pain_crud.Ignore;
 
 import java.io.Serializable;
@@ -18,16 +19,12 @@ public class Destinatarios implements Serializable {
     private boolean edit;
     @Ignore
     private boolean del;
-
+    @Id
     private int id;
 
     private int idmensagem;
 
     private String fone;
-
-    private Timestamp dataAgendamento;
-
-    private Timestamp dataEnvio;
 
     public boolean isAdd() {
         return add;
@@ -77,21 +74,5 @@ public class Destinatarios implements Serializable {
 
     public void setFone(String fone) {
         this.fone = fone;
-    }
-
-    public Timestamp getDataAgendamento() {
-        return dataAgendamento;
-    }
-
-    public void setDataAgendamento(Timestamp dataAgendamento) {
-        this.dataAgendamento = dataAgendamento;
-    }
-
-    public Timestamp getDataEnvio() {
-        return dataEnvio;
-    }
-
-    public void setDataEnvio(Timestamp dataEnvio) {
-        this.dataEnvio = dataEnvio;
     }
 }

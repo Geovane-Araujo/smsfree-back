@@ -30,10 +30,11 @@ public class TorpedosResource {
                 retorno.put("ret", "unsuccess");
                 retorno.put("motivo", "Token Inválido");
             } else {
+                torpedos.setIdusuario(us.getId());
                 torpedosController.save(torpedos);
                 retorno.put("ret", "success");
-                retorno.put("motivo", "OK");
-                retorno.put("obj", torpedos);
+                retorno.put("motivo", "200");
+                retorno.put("obj", "Smss incluidos na fila para envio");
             }
         }
         catch (SQLException e ) {
