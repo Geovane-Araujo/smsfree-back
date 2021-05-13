@@ -47,6 +47,7 @@ public class UtilToken {
         Connection con = null;
         con = connections.getNewConnections("atmusinf_sms");
         Users us = (Users) pc.getOne(Users.class,con,"select * from users where token = '"+ token +"'");
+        con.close();
         return us;
     }
 

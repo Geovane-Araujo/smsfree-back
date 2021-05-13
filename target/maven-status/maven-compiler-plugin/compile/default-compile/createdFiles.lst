@@ -1,0 +1,12 @@
+com\smsfree\spisms\model\Destinatarios.class
+com\smsfree\spisms\model\Destino.class
+com\smsfree\spisms\model\Torpedos.class
+com\smsfree\spisms\model\Mensagem.class
+com\smsfree\spisms\smsconnections\SmsConnections.class
+com\smsfree\spisms\controller\UsersController.class
+com\smsfree\spisms\controller\TorpedosController.class
+com\smsfree\spisms\resources\UsersResource.class
+com\smsfree\spisms\smsconnections\UtilToken.class
+com\smsfree\spisms\model\Users.class
+com\smsfree\spisms\resources\TorpedosResource.class
+com\smsfree\spisms\SpismsApplication.class
