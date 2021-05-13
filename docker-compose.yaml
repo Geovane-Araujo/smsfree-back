@@ -1,0 +1,41 @@
+version: '3.9'
+services:
+  postgres:
+    image: dataon/dataon_dbsms
+    restart: always
+    container_name: dataon_sms
+    environment:
+      TZ: America/Sao_Paulo
+      POSTGRES_PASSWORD: Atmus@#4080
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./docker:/var/lib/postgresql/data
+    networks:
+      - dataon-network
+  pgadmin:
+    image: dpage/pgadmin4
+    restart: always
+    container_name: pgadmin
+    environment:
+      TZ: America/Sao_Paulo
+      PGADMIN_DEFAULT_EMAIL: admin@dataon.com.br
+      PGADMIN_DEFAULT_PASSWORD: DO@102030
+    networks:
+      - dataon-network
+    ports:
+      - "8081:80"
+    depends_on:
+      - postgres
+  adoapi:
+    image: dataon/dataon_dbsms:1.0
+    restart: always
+    container_name: dataon_api
+    environment:
+      TZ: America/Sao_Paulo
+    network_mode: host
+    depends_on:
+      - postgres
+networks:
+  dataon-network:
+    driver: bridge

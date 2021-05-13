@@ -68,8 +68,13 @@ public class TorpedosController {
 
         Connection con = null;
         con = connection.getNewConnections("sms_free");
+        String sql = "";
+        if(us.getId() == 1){
+            sql = "select * from torpedos where status = 0";
+        } else {
+            sql = "select * from torpedos where idusuario = " + us.getId() + " and status = 0";
+        }
 
-        String sql = "select * from torpedos where idusuario = " + us.getId() + " and status = 0";
 
         List<Mensagem> torpedos = new ArrayList<>();
         Mensagem sms;

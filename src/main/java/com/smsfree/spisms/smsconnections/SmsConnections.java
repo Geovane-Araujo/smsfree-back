@@ -21,7 +21,7 @@ public class SmsConnections {
             String url = getUrl()+db;
             Class.forName("org.postgresql.Driver");
 
-            String senha = "1816";
+            String senha = "Atmus@#4080";
             DriverManager.getConnection(url, "postgres", senha);
             ret = true;
         } catch (SQLException | ClassNotFoundException e) {
@@ -37,7 +37,7 @@ public class SmsConnections {
         Connection con = null;
         String url = getUrl()+db;
         try {
-            String senha = "1816" +
+            String senha = "Atmus@#4080" +
                     "";
             con = DriverManager.getConnection(url,"postgres",senha);
         }

@@ -75,9 +75,10 @@ public class TorpedosResource {
     public ResponseEntity<?> checkshipping(@RequestHeader(value = "Authorization")String token)  {
 
         Hashtable retorno = new Hashtable();
-        Object obj;
+        Users us = new Users();
         try {
-            Users us = UtilToken.decode(token);
+
+            us = UtilToken.decode(token);
             if(us.getId() == 0){
                 retorno.put("ret", "unsuccess");
                 retorno.put("motivo", "Token Inválido");
