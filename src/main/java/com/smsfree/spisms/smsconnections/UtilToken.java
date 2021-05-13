@@ -45,7 +45,7 @@ public class UtilToken {
         PainCrud pc = new PainCrud();
         SmsConnections connections = new SmsConnections();
         Connection con = null;
-        con = connections.getNewConnections("sms_free");
+        con = connections.getNewConnections("atmusinf_sms");
         Users us = (Users) pc.getOne(Users.class,con,"select * from users where token = '"+ token +"'");
         return us;
     }

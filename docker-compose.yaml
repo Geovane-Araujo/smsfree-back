@@ -28,7 +28,7 @@ services:
     depends_on:
       - postgres
   dooapi:
-    image: dataon/dataon_apisms:1.0
+    image: dataon/dataon_apisms:1.1
     restart: always
     container_name: dataon_api
     environment:

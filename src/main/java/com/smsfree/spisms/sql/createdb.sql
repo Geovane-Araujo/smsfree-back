@@ -8,7 +8,7 @@ create table if not exists users(
     ativo smallint,
     type smallint -- 0 adm full e 1 usuario commum
 );
-insert into users(nome,login,senha,type,ativo,token) values('Administrador', 'admin', '123',0,1,'adonai');
+insert into users(nome,login,senha,type,ativo,token) values('Administrador', 'admin', '123',0,1,'admin');
 
 create table if not exists torpedos(
 
