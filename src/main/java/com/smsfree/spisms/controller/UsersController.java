@@ -23,7 +23,7 @@ public class UsersController {
         PreparedStatement stmt = null;
         int scalar = 0;
 
-        con = connection.getNewConnections("sms_free");
+        con = connection.getNewConnections("atmusinf_sms");
 
         con.setAutoCommit(false);
 
@@ -45,7 +45,7 @@ public class UsersController {
 
         Object object = new Object();
         Connection con = null;
-        con = connection.getNewConnections("sms_free");
+        con = connection.getNewConnections("atmusinf_sms");
 
         String sql = "select * from "+Users.class.getAnnotation(Alias.class).value()+" where id = " + id;
 
@@ -57,7 +57,7 @@ public class UsersController {
 
         Users object = new Users();
         Connection con = null;
-        con = connection.getNewConnections("sms_free");
+        con = connection.getNewConnections("atmusinf_sms");
 
         String sql = "select * from "+Users.class.getAnnotation(Alias.class).value()+" where login = '" + us.getLogin() + "' and senha = '" + us.getSenha() + "'";
 

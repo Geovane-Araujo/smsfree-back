@@ -13,7 +13,7 @@ public class SpismsApplication {
 
         SpringApplication.run(SpismsApplication.class, args);
         SmsConnections con = new SmsConnections();
-        con.openSessionConnections("sms_free");
+        con.openSessionConnections("atmusinf_sms");
     }
 
 }

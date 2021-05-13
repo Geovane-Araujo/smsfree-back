@@ -26,7 +26,7 @@ public class TorpedosController {
         PreparedStatement stmt = null;
         int scalar = 0;
 
-        con = connection.getNewConnections("sms_free");
+        con = connection.getNewConnections("atmusinf_sms");
 
         con.setAutoCommit(false);
 
@@ -54,7 +54,7 @@ public class TorpedosController {
 
         Torpedos object = new Torpedos();
         Connection con = null;
-        con = connection.getNewConnections("sms_free");
+        con = connection.getNewConnections("atmusinf_sms");
 
         String sql = "select * from "+Torpedos.class.getAnnotation(Alias.class).value()+" where id = " + id;
 
@@ -67,7 +67,7 @@ public class TorpedosController {
     public Object checkShipping(Users us) throws SQLException, IllegalAccessException {
 
         Connection con = null;
-        con = connection.getNewConnections("sms_free");
+        con = connection.getNewConnections("atmusinf_sms");
         String sql = "";
         if(us.getId() == 1){
             sql = "select * from torpedos where status = 0";
@@ -99,7 +99,7 @@ public class TorpedosController {
     public Object updateShipping(List<Torpedos> torpedos) throws SQLException, IllegalAccessException {
 
         Connection con = null;
-        con = connection.getNewConnections("sms_free");
+        con = connection.getNewConnections("atmusinf_sms");
 
 
         for (Torpedos ta:torpedos) {
@@ -115,7 +115,7 @@ public class TorpedosController {
 
         Object object = new Object();
         Connection con = null;
-        con = connection.getNewConnections("sms_free");
+        con = connection.getNewConnections("atmusinf_sms");
 
         String sql = "select id, mensagem,COALEsCE(CAST(dataagendamento as varchar),'') as DataAgendamento,COALEsCE(CAST(dataenvio as varchar),'')as DataEnvio ,(select COUNT(*) from destinatarios where idmensagem = torpedos.id) as quantidade\n" +
                 "from torpedos where idusuario = " + id;
