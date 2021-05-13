@@ -27,7 +27,7 @@ services:
       - "8081:80"
     depends_on:
       - postgres
-  adoapi:
+  dooapi:
     image: dataon/dataon_apisms:1.0
     restart: always
     container_name: dataon_api
