@@ -6,6 +6,7 @@ import com.sun.jersey.core.util.Base64;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Random;
 
 public class UtilToken {
 
@@ -50,7 +51,11 @@ public class UtilToken {
     }
 
     public static String encode(Users us){
-        String encodedString = java.util.Base64.getEncoder().encodeToString((us.toString()).getBytes());
+        Random rand = new Random();
+        String s = Long.toHexString(rand.nextLong());
+        s += String.valueOf(us.getId());
+
+        String encodedString = java.util.Base64.getEncoder().encodeToString((s).getBytes());
         return encodedString;
     }
 }
