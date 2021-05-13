@@ -1,7 +1,7 @@
 version: '3.9'
 services:
   postgres:
-    image: dataon/dataon_dbsms
+    image: dataon/dataon_dbsms:1.0
     restart: always
     container_name: dataon_sms
     environment:
@@ -28,7 +28,7 @@ services:
     depends_on:
       - postgres
   adoapi:
-    image: dataon/dataon_dbsms:1.0
+    image: dataon/dataon_apisms:1.0
     restart: always
     container_name: dataon_api
     environment:
