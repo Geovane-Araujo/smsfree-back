@@ -9,4 +9,5 @@ com\smsfree\spisms\resources\UsersResource.class
 com\smsfree\spisms\smsconnections\UtilToken.class
 com\smsfree\spisms\model\Users.class
 com\smsfree\spisms\resources\TorpedosResource.class
+com\smsfree\spisms\IndexController.class
 com\smsfree\spisms\SpismsApplication.class
