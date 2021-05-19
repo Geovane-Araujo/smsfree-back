@@ -32,7 +32,18 @@ public class Torpedos implements Serializable {
 
     private int status = 0;
 
+    @Ignore
+    private String dataAgendamento;
+
     private Timestamp dataagendamento;
+
+    public String getDataAgendamento() {
+        return dataAgendamento;
+    }
+
+    public void setDataAgendamento(String dataAgendamento) {
+        this.dataAgendamento = dataAgendamento;
+    }
 
     public Timestamp getDataagendamento() {
         return dataagendamento;

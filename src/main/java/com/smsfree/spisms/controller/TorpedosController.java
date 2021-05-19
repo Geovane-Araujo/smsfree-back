@@ -70,9 +70,9 @@ public class TorpedosController {
         con = connection.getNewConnections("atmusinf_sms");
         String sql = "";
         if(us.getId() == 1){
-            sql = "select * from torpedos where status = 0";
+            sql = "select * from torpedos where status = 0 and dataagendamento < now()";
         } else {
-            sql = "select * from torpedos where idusuario = " + us.getId() + " and status = 0";
+            sql = "select * from torpedos where idusuario = " + us.getId() + " and status = 0 and dataagendamento < now()";
         }
 
 

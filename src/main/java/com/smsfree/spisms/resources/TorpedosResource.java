@@ -9,6 +9,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Hashtable;
 import java.util.List;
 
@@ -30,7 +34,12 @@ public class TorpedosResource {
                 retorno.put("ret", "unsuccess");
                 retorno.put("motivo", "Token Inválido");
             } else {
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+
+                Date parsedDate = dateFormat.parse(torpedos.getDataAgendamento());
+                Timestamp timestamp = new java.sql.Timestamp(parsedDate.getTime());
                 torpedos.setIdusuario(us.getId());
+                torpedos.setDataagendamento(timestamp);
                 torpedosController.save(torpedos);
                 retorno.put("ret", "success");
                 retorno.put("motivo", "200");
@@ -43,6 +52,8 @@ public class TorpedosResource {
         } catch (IllegalAccessException ex) {
             retorno.put("ret", "unsuccess");
             retorno.put("motivo",ex.getMessage());
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
 
         return ResponseEntity.ok().body(retorno);
