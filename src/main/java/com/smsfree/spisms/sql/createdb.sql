@@ -20,11 +20,11 @@ create table if not exists torpedos(
     dataenvio timestamp
 );
 
-alter table torpedos add constraint fk_users foreign key (idusuario) references users(id) on delete cascade;
+alter table torpedos add constraint fk_users foreign key (idusuario) references users(id);
 
 create table if not exists destinatarios(
     id serial primary key,
     idmensagem int,
     fone varchar(11)
 );
-alter table destinatarios add constraint fk_users foreign key (idmensagem) references torpedos(id);
+alter table destinatarios add constraint fk_mensagem foreign key (idmensagem) references torpedos(id)on delete cascade;
