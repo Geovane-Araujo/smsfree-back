@@ -35,7 +35,7 @@ public class TorpedosResource {
                 retorno.put("motivo", "Token Inválido");
             } else {
                 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-
+                System.out.println("Data de Agendamento pela DA: " + torpedos.getDataAgendamento());
                 Date parsedDate = dateFormat.parse(torpedos.getDataAgendamento());
                 Timestamp timestamp = new java.sql.Timestamp(parsedDate.getTime());
                 torpedos.setIdusuario(us.getId());
