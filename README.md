@@ -22,7 +22,10 @@ Link do projeto em produção:
 
 
 Link:
-[SendSms](https://github.com/Geovane-Araujo/smsfree-front) - Front-End
-[SendSms](https://github.com/Geovane-Araujo/api_smsv2) - Api em Python
-[SendSms](https://github.com/Geovane-Araujo/smsfree-mobile) - Projeto Mobile
+
+[SendSms - Front-end](https://github.com/Geovane-Araujo/smsfree-front) - Front-End
+
+[SendSms - Back-end Python](https://github.com/Geovane-Araujo/api_smsv2) - Api em Python
+
+[SendSms - Mobile](https://github.com/Geovane-Araujo/smsfree-mobile) - Projeto Mobile
 
